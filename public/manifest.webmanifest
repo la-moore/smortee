@@ -1,14 +1,14 @@
 {
-  "name":"WN Hub",
-  "short_name":"WN Hub",
-  "start_url":"/?source=pwa",
+  "name":"Smortee",
+  "short_name":"Smortee",
+  "start_url":"/",
   "display":"standalone",
   "background_color":"#000",
   "lang":"en",
   "scope":"/",
   "orientation": "portrait-primary",
-  "description":"Game industry communication platform",
-  "theme_color":"#10a1f5",
+  "description":"Introduction to front end",
+  "theme_color":"#603cba",
   "icons": [
     {
       "src": "/favicon/android-chrome-192x192.png",
