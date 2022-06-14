@@ -4,19 +4,27 @@ const state = reactive({
   menu: [
     {
       label: 'HTML',
-      route: { name: 'article', params: { id: 'introduction-to-front-end' }},
+      route: { name: 'article', params: { id: 'html' }},
     },
     {
       label: 'CSS',
-      route: { to: '/' },
+      route: { name: 'article', params: { id: 'css' }},
+    },
+    {
+      label: 'Tailwind',
+      // route: { to: '/' },
     },
     {
       label: 'JavaScript',
-      route: { to: '/' },
+      // route: { to: '/' },
     },
     {
       label: 'Vue',
-      route: { to: '/' },
+      // route: { to: '/' },
+    },
+    {
+      label: 'Git',
+      // route: { to: '/' },
     }
   ]
 })

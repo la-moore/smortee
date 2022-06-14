@@ -4,11 +4,17 @@
       <h1>Введение в Frontend</h1>
 
       <ul>
-        <template v-for="(item, idx) in menu" :key="idx">
-          <li>
+        <template
+          v-for="(item, idx) in menu"
+          :key="idx"
+        >
+          <li v-if="item.route">
             <router-link :to="item.route">
               {{ item.label }}
             </router-link>
+          </li>
+          <li v-else>
+            {{ item.label }}
           </li>
         </template>
       </ul>

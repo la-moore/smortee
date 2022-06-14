@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>Window</title>
+  <style>
+    body {
+      background: #333;
+    }
+    .window {
+      width: 200px;
+      height: 380px;
+      position: relative;
+      background: #fff;
+      margin: 0 auto;
+    }
+    .moon {
+      top: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      border-radius: 100%;
+      position: absolute;
+      background: #a1a1a1;
+    }
+    .window:after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: calc(50% - 5px);
+      width: 10px;
+      height: 100%;
+      background: #333;
+    }
+    .window:before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: calc(30% - 5px);
+      width: 100%;
+      height: 10px;
+      background: #333;
+    }
+  </style>
+</head>
+<body>
+<div class="window">
+  <div class="moon"></div>
+</div>
+</body>
+</html>

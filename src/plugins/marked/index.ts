@@ -10,6 +10,70 @@ function generateList(toc) {
   return `<ul>${links.join('')}</ul>`
 }
 
+const toc: marked.TokenizerExtension & marked.RendererExtension = {
+  name: 'toc',
+  level: 'block',
+  start(src) { return src.match(/{{\s(\w+)\s}}/)?.index },
+  tokenizer(src) {
+    const rule = /^{{\s(\w+)\s}}/
+    const match = rule.exec(src)
+
+    this.lexer.tokens.map((token: any) => {
+      if (token.type === 'toc') {
+        token.tokens = this.lexer.tokens
+          .filter((token: any) => token.type === 'heading')
+          .filter((token: any) => token.depth > 1)
+          .filter((token: any) => token.depth < 3)
+      }
+
+      return token
+    })
+
+    if (match) {
+      const token = {
+        type: 'toc',
+        raw: match[0],
+        text: match[0].trim(),
+        tokens: this.lexer.tokens.filter((token) => token.type === 'heading')
+      }
+
+      this.lexer.inline(token.text, token.tokens)
+
+      return token
+    }
+  },
+  renderer(token) {
+    return generateList(token.tokens.slice(0, -1))
+  }
+}
+
+const iframe: marked.TokenizerExtension & marked.RendererExtension = {
+  name: 'iframe',
+  level: 'block',
+  start(src) { return src.match(/{{ toc }}/)?.index },
+  tokenizer(src) {
+    const rule = /^\s+?-\[iframe\]\((.+)\)\s+(\w+)/
+    const match = rule.exec(src)
+
+    if (match) {
+      const token = {
+        type: 'iframe',
+        raw: match[0],
+        text: match[1].trim(),
+        height: match[2].trim(),
+        tokens: []
+      }
+
+      this.lexer.inline(token.text, token.tokens)
+
+      return token
+    }
+  },
+  renderer(token) {
+    return `<iframe src="${token.text}" style="width: 100%; height: ${token.height || 200}px"></iframe>`
+  }
+}
+
 const plugin: Plugin = function() {
   const renderer = new Renderer()
 
@@ -39,46 +103,9 @@ const plugin: Plugin = function() {
     return `<img src="${href}" alt="${text}" class="mx-auto max-w-full" />`
   }
 
-  const descriptionList: marked.TokenizerExtension & marked.RendererExtension = {
-    name: 'toc',
-    level: 'block',
-    start(src) { return src.match(/{{\s(\w+)\s}}/)?.index },
-    tokenizer(src) {
-      const rule = /^{{\s(\w+)\s}}/
-      const match = rule.exec(src)
-
-      this.lexer.tokens.map((token: any) => {
-        if (token.type === 'toc') {
-          token.tokens = this.lexer.tokens
-            .filter((token: any) => token.type === 'heading')
-            .filter((token: any) => token.depth > 1)
-            .filter((token: any) => token.depth < 3)
-        }
-
-        return token
-      })
-
-      if (match) {
-        const token = {
-          type: 'toc',
-          raw: match[0],
-          text: match[0].trim(),
-          tokens: this.lexer.tokens.filter((token) => token.type === 'heading')
-        }
-
-        this.lexer.inline(token.text, token.tokens)
-
-        return token
-      }
-    },
-    renderer(token) {
-      return generateList(token.tokens.slice(0, -1))
-    }
-  }
-
   marked.use({
     renderer,
-    extensions: [descriptionList]
+    extensions: [toc, iframe]
   })
 }
 
