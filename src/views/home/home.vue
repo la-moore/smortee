@@ -49,7 +49,7 @@
         </li>
         <li>
           <a
-            href="https://learn.javascript.ru/"
+            href="https://learn.javascript.ru"
             target="_blank"
           >
             JavaScript

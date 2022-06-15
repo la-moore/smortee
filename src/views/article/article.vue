@@ -28,10 +28,10 @@
       </div>
     </div>
 
-    <main class="flex-1">
+    <main class="flex-1 w-0">
       <div class="max-w-7xl mx-auto py-12 px-6">
         <div
-          class="prose max-w-full"
+          class="prose max-w-5xl mx-auto w-full"
           v-html="md"
         />
       </div>

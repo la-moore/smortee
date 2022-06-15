@@ -5,7 +5,9 @@ import MarkdownAttrs from 'markdown-it-attrs'
 import MarkdownAnchor from 'markdown-it-anchor'
 import MarkdownMedia from './markdown-it-media'
 
-export const markdownIt = new MarkdownIt()
+export const markdownIt = new MarkdownIt({
+  html: true
+})
 
 const plugin: Plugin = function() {
   markdownIt.use(MarkdownAttrs)

@@ -12,15 +12,15 @@ const state = reactive({
     },
     {
       label: 'Дизайн',
-      // route: { name: 'article', params: { id: 'design' }},
+      route: { name: 'article', params: { id: 'design' }},
     },
     {
       label: 'Библиотеки',
-      // route: { name: 'article', params: { id: 'libs' }},
+      route: { name: 'article', params: { id: 'libs' }},
     },
     {
       label: 'JavaScript',
-      // route: { name: 'article', params: { id: 'design' }},
+      route: { name: 'article', params: { id: 'javascript' }},
     },
     {
       label: 'Vue',

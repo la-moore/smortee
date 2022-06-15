@@ -22,6 +22,8 @@ module.exports = {
               paddingLeft: theme('spacing.0.5'),
               paddingRight: theme('spacing.0.5'),
               borderRadius: theme('borderRadius.sm'),
+              overflow: theme('overflow.x.auto'),
+              width: theme('width.full'),
             },
             a: {
               color: theme('colors.blue.500'),
