@@ -2,10 +2,10 @@
 Повторите примеры приведенные ниже:
 
 1. Кнопка
-   -[iframe](/examples/button.html) 100
+   ![iframe](/examples/button.html)
 
 2. Батарейка
-  -[iframe](/examples/battery.html) 100
+   ![iframe](/examples/battery.html)
 
 3. Окно
-   -[iframe](/examples/window.html) 400
+   ![iframe](/examples/window.html)

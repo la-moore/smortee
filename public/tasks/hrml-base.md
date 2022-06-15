@@ -2,13 +2,13 @@
 Повторите примеры приведенные ниже:
 
 1. Заголовки
-   -[iframe](/examples/headers.html) 400
+   ![iframe](/examples/headers.html)
 
-2. Страничка
-   -[iframe](/examples/simple-html-page.html) 400
+3. Страничка
+   ![iframe](/examples/simple-html-page.html)
 
-3. Списки
-   -[iframe](/examples/lists.html) 600
+4. Списки
+   ![iframe](/examples/lists.html)
 
 5. А теперь все вместе
-   -[iframe](/examples/html-all.html) 600
+   ![iframe](/examples/html-all.html)

@@ -18,6 +18,52 @@
           </li>
         </template>
       </ul>
+
+      <br><br><br><br>
+      <h1>Быстрые ссылки</h1>
+
+      <ul>
+        <li>
+          <a
+            href="https://codepen.io"
+            target="_blank"
+          >
+            CodePen
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://developer.mozilla.org/ru/docs/Learn"
+            target="_blank"
+          >
+            Mozilla
+          </a>
+        </li>
+        <li>
+          <a
+            href="http://htmlbook.ru"
+            target="_blank"
+          >
+            HtmlBook
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://learn.javascript.ru/"
+            target="_blank"
+          >
+            JavaScript
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://tailwindcss.com/docs"
+            target="_blank"
+          >
+            TailwindCss
+          </a>
+        </li>
+      </ul>
     </div>
   </main>
 </template>

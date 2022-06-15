@@ -39,4 +39,4 @@
 <div>Arcu cursus vitae congue mauris rhoncus aenean vel elit.</div>
 ```
 5. А теперь все вместе
-   -[iframe](/examples/css-all.html) 460
+   ![iframe](/examples/css-all.html)

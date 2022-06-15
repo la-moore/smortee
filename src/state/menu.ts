@@ -11,20 +11,24 @@ const state = reactive({
       route: { name: 'article', params: { id: 'css' }},
     },
     {
-      label: 'Tailwind',
-      // route: { to: '/' },
+      label: 'Дизайн',
+      // route: { name: 'article', params: { id: 'design' }},
+    },
+    {
+      label: 'Библиотеки',
+      // route: { name: 'article', params: { id: 'libs' }},
     },
     {
       label: 'JavaScript',
-      // route: { to: '/' },
+      // route: { name: 'article', params: { id: 'design' }},
     },
     {
       label: 'Vue',
-      // route: { to: '/' },
+      // route: { name: 'article', params: { id: 'design' }},
     },
     {
       label: 'Git',
-      // route: { to: '/' },
+      // route: { name: 'article', params: { id: 'design' }},
     }
   ]
 })

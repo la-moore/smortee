@@ -1,7 +1,5 @@
 # Язык HTML
 
-{{ toc }}
-
 ## Введение
 
 ### Что такое HTML
@@ -185,10 +183,11 @@ HTML-элемент `<body>` представляет собой контент 
 - [Сверстать форму](/task/write-simple-form)
 
 ## Полезные Ссылки
+- [CodePen](https://codepen.io)
 - [Mozilla - HTML](https://developer.mozilla.org/ru/docs/Learn/HTML)
 - [HtmlBook](http://htmlbook.ru/html5)
 
 ## Ресурсы
 - [Landing](https://shreethemes.in/techwind/layouts/index-landing-four.html)
 - [Heroicons](https://heroicons.dev)
-- [Pexels](https://www.pexels.com/)
+- [Pexels](https://www.pexels.com)

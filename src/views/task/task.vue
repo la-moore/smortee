@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import { defineComponent, computed, onMounted, ref } from 'vue'
-import { marked } from 'marked'
+import { markdownIt } from '/~/plugins/markdown'
 
 const content = ref<any>('')
 const reader = (data) => new Promise((resolve) => {
@@ -39,7 +39,7 @@ export default defineComponent({
   },
   setup(props) {
     const md = computed(() => {
-      return marked.parse(content.value)
+      return markdownIt.render(content.value)
     })
     const toc = computed(() => {
       return ''
