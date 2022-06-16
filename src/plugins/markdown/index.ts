@@ -2,7 +2,7 @@ import { Plugin } from 'vue'
 import MarkdownIt from 'markdown-it'
 import MarkdownToc from 'markdown-it-table-of-contents'
 import MarkdownAttrs from 'markdown-it-attrs'
-import MarkdownAnchor from 'markdown-it-anchor'
+import MarkdownAnchor from './markdown-it-anchor'
 import MarkdownMedia from './markdown-it-media'
 
 export const markdownIt = new MarkdownIt({
