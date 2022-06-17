@@ -1,84 +1,59 @@
 <template>
-  <main class="max-w-7xl mx-auto py-12 px-6">
-    <div class="prose max-w-full">
-      <h1>Введение в Frontend</h1>
+  <div class="bg-gray-50 min-h-screen">
+    <div class="flex items-center py-32">
+      <div class="max-w-md w-full mx-auto py-12 px-6">
+        <base-logo />
+      </div>
+    </div>
 
-      <ul>
+    <div class="max-w-7xl mx-auto pb-12 px-6">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         <template
-          v-for="(item, idx) in menu"
+          v-for="(course, idx) in courses"
           :key="idx"
         >
-          <li v-if="item.route">
-            <router-link :to="item.route">
-              {{ item.label }}
-            </router-link>
-          </li>
-          <li v-else>
-            {{ item.label }}
-          </li>
+          <router-link
+            class="block"
+            :to="{ name: 'course', params: { id: course.id } }"
+          >
+            <div class="overflow-hidden border rounded-md bg-white h-full">
+              <div class="px-6 py-4 space-y-3">
+                <div class="text-2xl font-extrabold text-gray-900 sm:text-3xl">
+                  {{ course.name }}
+                </div>
+                <p>
+                  {{ course.description }}
+                </p>
+              </div>
+            </div>
+          </router-link>
         </template>
-      </ul>
-
-      <br><br><br><br>
-      <h1>Быстрые ссылки</h1>
-
-      <ul>
-        <li>
-          <a
-            href="https://codepen.io"
-            target="_blank"
-          >
-            CodePen
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://developer.mozilla.org/ru/docs/Learn"
-            target="_blank"
-          >
-            Mozilla
-          </a>
-        </li>
-        <li>
-          <a
-            href="http://htmlbook.ru"
-            target="_blank"
-          >
-            HtmlBook
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://learn.javascript.ru"
-            target="_blank"
-          >
-            JavaScript
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://tailwindcss.com/docs"
-            target="_blank"
-          >
-            TailwindCss
-          </a>
-        </li>
-      </ul>
+      </div>
     </div>
-  </main>
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import { useMenu } from '/~/state/menu'
+import { defineComponent, onMounted, ref } from 'vue'
+import { useCourses } from '/~/state/courses'
+import BaseLogo from '/~/components/base-logo.vue'
 
 export default defineComponent({
   name: 'HomeView',
+  components: {
+    BaseLogo
+  },
   setup() {
-    const { menu } = useMenu()
+    const { fetchCourses } = useCourses()
+
+    const courses = ref([])
+
+    onMounted(async () => {
+      courses.value = await fetchCourses()
+    })
 
     return {
-      menu
+      courses
     }
   }
 })

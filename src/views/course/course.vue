@@ -21,7 +21,7 @@
     </div>
 
     <div class="max-w-7xl mx-auto py-12 px-6">
-      <div class="grid grid-cols-3 gap-6">
+      <div class="grid lg:grid-cols-2 2xl:grid-cols-3 gap-6">
         <template
           v-for="(article, idx) in course.articles"
           :key="idx"

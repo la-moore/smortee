@@ -3,7 +3,7 @@
     <div class="flex-shrink-0 md:w-64 md:h-screen md:border-r bg-gray-100 sticky top-0">
       <div class="pb-4">
         <div class="h-14 flex items-center px-5">
-          <base-logo class="h-8" />
+          <base-logo class="h-10" />
         </div>
 
         <nav
@@ -36,35 +36,49 @@
       </div>
     </div>
 
-    <main class="flex-1 md:w-0">
+    <main class="flex-1 md:w-0 space-y-12">
       <div class="max-w-7xl mx-auto py-12 px-6">
         <div class="prose max-w-5xl mx-auto w-full mb-12">
-          <h1>{{ meta?.title }}</h1>
+          <h1>{{ article.name }}</h1>
         </div>
 
         <div
           class="prose max-w-5xl mx-auto w-full"
           v-html="md"
         />
+      </div>
 
-        <div
-          v-if="meta?.tasks"
-          class="prose max-w-5xl mx-auto w-full mt-12"
-        >
-          <h2>Практика</h2>
+      <div
+        v-if="article.tasks?.length"
+        class="bg-gray-50 py-12"
+      >
+        <div class="max-w-7xl mx-auto px-6">
+          <h2 class="text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl mb-20">
+            Практика
+          </h2>
 
-          <ul>
+          <div class="grid lg:grid-cols-2 2xl:grid-cols-3 gap-6">
             <template
-              v-for="(item, idx) in meta?.tasks"
+              v-for="(task, idx) in article.tasks"
               :key="idx"
             >
-              <li>
-                <router-link :to="`/task/${item.file}`">
-                  {{ item.name }}
-                </router-link>
-              </li>
+              <router-link
+                class="block"
+                :to="{ name: 'task', params: { id: task.id } }"
+              >
+                <div class="overflow-hidden border rounded-md bg-white h-full">
+                  <div class="px-6 py-4 space-y-3">
+                    <div class="text-2xl font-extrabold text-gray-900 sm:text-3xl">
+                      {{ task.name }}
+                    </div>
+                    <p v-if="task.description">
+                      {{ task.description }}
+                    </p>
+                  </div>
+                </div>
+              </router-link>
             </template>
-          </ul>
+          </div>
         </div>
       </div>
     </main>
@@ -76,20 +90,20 @@ import { defineComponent, computed, onMounted, ref, watch, onBeforeUnmount } fro
 import { useRoute } from 'vue-router'
 import { markdownIt } from '/~/plugins/markdown'
 import { kebab, transliterate } from '/~/helpers/text-transform'
-import { reader } from '/~/helpers/reader'
+import { useArticles } from '/~/state/articles'
 import BaseLogo from '/~/components/base-logo.vue'
 
-const content = ref<any>('')
+const article = ref<any>(undefined)
 
 export default defineComponent({
-  name: 'HomeView',
+  name: 'ArticleView',
   components: {
     BaseLogo
   },
   async beforeRouteEnter(to, from, next) {
-    const data = await fetch(`/articles/${to.params.id}.md`).then(response => response.blob())
+    const { fetchArticle } = useArticles()
 
-    content.value = await reader(data)
+    article.value = await fetchArticle(`${to.params.id}`)
 
     next()
   },
@@ -99,15 +113,15 @@ export default defineComponent({
       default: '',
     }
   },
-  setup(props) {
+  setup() {
     const route = useRoute()
 
     const md = computed(() => {
-      return markdownIt.render(content.value)
+      return markdownIt.render(article.value?.text)
     })
     const toc = computed(() => {
-      return content.value.match(/^(#{1,6})\s.+$/gm)
-        .map((v) => {
+      return article.value?.text.match(/^(#{1,6})\s.+$/gm)
+        ?.map((v) => {
           const m = v.match(/^(#{1,6})\s(.+)$/m)
 
           return {
@@ -117,7 +131,7 @@ export default defineComponent({
             text: m[2],
           }
         })
-        .filter((v) => v.level === 2)
+        ?.filter((v) => v.level === 2)
     })
     const meta = ref(undefined)
     const hash = ref(route.hash)
@@ -128,19 +142,6 @@ export default defineComponent({
     })
 
     onMounted(async () => {
-      const data = await fetch(`/articles/${props.id}.md`).then(response => response.blob())
-      const reader = new FileReader()
-
-      if (!hash.value) {
-        hash.value = '#' + toc.value[0].href
-      }
-
-      reader.readAsText(data)
-
-      reader.addEventListener('loadend', function(e){
-        content.value = e.target.result
-      })
-
       window.addEventListener('scroll', onScroll)
 
       meta.value = markdownIt.meta
@@ -178,6 +179,7 @@ export default defineComponent({
       toc,
       hash,
       meta,
+      article,
       navigation
     }
   }

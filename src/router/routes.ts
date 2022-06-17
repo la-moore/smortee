@@ -11,7 +11,7 @@ export default [
       {
         path: 'home',
         name: 'home',
-        component: () => import('../views/home-new/home.vue')
+        component: () => import('../views/home/home.vue')
       },
       {
         path: 'course/:id',
@@ -23,13 +23,13 @@ export default [
         path: 'article/:id',
         name: 'article',
         props: true,
-        component: () => import('../views/article-new/article.vue')
+        component: () => import('../views/article/article.vue')
       },
       {
         path: 'task/:id',
         name: 'task',
         props: true,
-        component: () => import('../views/task-new/task.vue')
+        component: () => import('../views/task/task.vue')
       },
     ]
   },
