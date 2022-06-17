@@ -1,7 +1,8 @@
 <template>
   <div class="min-h-screen md:flex">
-    <div class="flex-shrink-0 md:w-64 md:h-screen md:border-r bg-gray-100 sticky top-0">
+    <div class="flex-shrink-0 md:w-64 md:h-screen border-b md:border-b-0 md:border-r bg-gray-100 sticky top-0">
       <div class="pb-4">
+        <div class="pt-safe pt-3" />
         <div class="h-14 flex items-center px-5">
           <base-logo class="h-10" />
         </div>

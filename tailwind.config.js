@@ -1,6 +1,7 @@
 const typography = require('@tailwindcss/typography')
 const aspect = require('@tailwindcss/aspect-ratio')
 const forms = require('@tailwindcss/forms')
+const safeArea = require('tailwindcss-safe-area')
 
 module.exports = {
   content: [
@@ -35,6 +36,7 @@ module.exports = {
   },
   plugins: [
     typography,
+    safeArea,
     aspect,
     forms()
   ],

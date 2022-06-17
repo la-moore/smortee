@@ -90,76 +90,123 @@ const state = reactive({
       created_at: '2022-06-15 11:55:04',
       description: null,
       text: '',
+      file: 'css-animations.md',
+      name: 'Анимации',
+      courseId: 2,
+      tasks: []
+    },
+    {
+      id: 0,
+      created_at: '2022-06-15 11:55:04',
+      description: null,
+      text: '',
       file: 'css-directory.md',
       name: 'Справочник',
       courseId: 2,
       tasks: []
     },
 
-    // {
-    //   id: 0,
-    //   created_at: '2022-06-15 11:55:04',
-    //   description: null,
-    //   name: 'Введение в JavaScript',
-    //   courseId: 3,
-    //   tasks: []
-    // },
-    // {
-    //   id: 0,
-    //   created_at: '2022-06-15 11:55:04',
-    //   description: null,
-    //   name: 'Типы данных',
-    //   courseId: 3,
-    //   tasks: []
-    // },
-    // {
-    //   id: 0,
-    //   created_at: '2022-06-15 11:55:04',
-    //   description: null,
-    //   name: 'Функции',
-    //   courseId: 3,
-    //   tasks: []
-    // },
-    // {
-    //   id: 0,
-    //   created_at: '2022-06-15 11:55:04',
-    //   description: null,
-    //   name: 'Переменные',
-    //   courseId: 3,
-    //   tasks: []
-    // },
-    // {
-    //   id: 0,
-    //   created_at: '2022-06-15 11:55:04',
-    //   description: null,
-    //   name: 'Циклы',
-    //   courseId: 3,
-    //   tasks: []
-    // },
-    // {
-    //   id: 0,
-    //   created_at: '2022-06-15 11:55:04',
-    //   description: null,
-    //   name: 'События',
-    //   courseId: 3,
-    //   tasks: []
-    // },
-    // {
-    //   id: 0,
-    //   created_at: '2022-06-15 11:55:04',
-    //   description: null,
-    //   name: 'Отладка',
-    //   courseId: 3,
-    //   tasks: []
-    // },
-    // {
-    //   id: 0,
-    //   created_at: '2022-06-15 11:55:04',
-    //   description: null,
-    //   name: 'Веб API',
-    //   courseId: 3,
-    //   tasks: []
-    // },
+    {
+      id: 0,
+      created_at: '2022-06-15 11:55:04',
+      description: null,
+      text: '',
+      file: 'javascript-intro.md',
+      name: 'Введение',
+      courseId: 3,
+      tasks: []
+    },
+    {
+      id: 0,
+      created_at: '2022-06-15 11:55:04',
+      description: null,
+      text: '',
+      file: 'javascript-types.md',
+      name: 'Типы данных',
+      courseId: 3,
+      tasks: []
+    },
+    {
+      id: 0,
+      created_at: '2022-06-15 11:55:04',
+      description: null,
+      text: '',
+      file: 'javascript-functions.md',
+      name: 'Функции',
+      courseId: 3,
+      tasks: []
+    },
+    {
+      id: 0,
+      created_at: '2022-06-15 11:55:04',
+      description: null,
+      text: '',
+      file: 'javascript-variables.md',
+      name: 'Переменные',
+      courseId: 3,
+      tasks: []
+    },
+    {
+      id: 0,
+      created_at: '2022-06-15 11:55:04',
+      description: null,
+      text: '',
+      file: 'javascript-loops.md',
+      name: 'Циклы',
+      courseId: 3,
+      tasks: []
+    },
+    {
+      id: 0,
+      created_at: '2022-06-15 11:55:04',
+      description: null,
+      text: '',
+      file: 'javascript-events.md',
+      name: 'События',
+      courseId: 3,
+      tasks: []
+    },
+    {
+      id: 0,
+      created_at: '2022-06-15 11:55:04',
+      description: null,
+      text: '',
+      file: 'javascript-console.md',
+      name: 'Консоль боаузера',
+      courseId: 3,
+      tasks: []
+    },
+    {
+      id: 0,
+      created_at: '2022-06-15 11:55:04',
+      description: null,
+      text: '',
+      file: 'javascript-web-api.md',
+      name: 'Веб API',
+      courseId: 3,
+      tasks: []
+    },
+
+    {
+      id: 0,
+      created_at: '2022-06-15 11:55:04',
+      description: null,
+      text: '',
+      file: 'libs-intro.md',
+      name: 'Что такое библиотека',
+      courseId: 4,
+      tasks: []
+    },
+    {
+      id: 0,
+      created_at: '2022-06-15 11:55:04',
+      description: null,
+      text: '',
+      file: 'libs-tailwind-css.md',
+      name: 'Tailwind Css',
+      courseId: 4,
+      tasks: []
+    },
   ],
 })
 

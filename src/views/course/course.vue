@@ -3,8 +3,11 @@
     v-if="course"
     class="bg-gray-50 min-h-screen"
   >
-    <div class="h-14 flex items-center px-5 bg-white">
-      <base-logo class="h-10" />
+    <div class="bg-white sticky top-0 border-b">
+      <div class="pt-safe pt-3" />
+      <div class="h-16 flex items-center px-5">
+        <base-logo class="h-10" />
+      </div>
     </div>
 
     <div class="bg-white">
