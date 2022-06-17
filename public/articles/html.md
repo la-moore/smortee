@@ -1,4 +1,9 @@
-# Язык HTML
+---
+title: Язык HTML
+tasks:
+- { name: 'Задачи по верстке', file: 'hrml-base'}
+- { name: 'Сверстать форму', file: 'write-simple-form'}
+---
 
 ## Введение
 
@@ -267,10 +272,6 @@ HTML-элемент `<body>` представляет собой контент 
 | `<input>`                | [поле для ввода данных](http://htmlbook.ru/html/input)        |
 | `<select>` -> `<option>` | [поле ввода с выбором ответа](http://htmlbook.ru/html/select) |
 | `<label>`                | [название для поля ввода](http://htmlbook.ru/html/label)      |
-
-## Практика
-- [Задачи по верстке](/task/hrml-base)
-- [Сверстать форму](/task/write-simple-form)
 
 ## Полезные Ссылки
 - [CodePen](https://codepen.io)

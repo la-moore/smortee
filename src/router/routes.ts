@@ -11,19 +11,25 @@ export default [
       {
         path: 'home',
         name: 'home',
-        component: () => import('../views/home/home.vue')
+        component: () => import('../views/home-new/home.vue')
+      },
+      {
+        path: 'course/:id',
+        name: 'course',
+        props: true,
+        component: () => import('../views/course/course.vue')
       },
       {
         path: 'article/:id',
         name: 'article',
         props: true,
-        component: () => import('../views/article/article.vue')
+        component: () => import('../views/article-new/article.vue')
       },
       {
         path: 'task/:id',
         name: 'task',
         props: true,
-        component: () => import('../views/task/task.vue')
+        component: () => import('../views/task-new/task.vue')
       },
     ]
   },

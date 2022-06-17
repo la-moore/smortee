@@ -1,5 +1,10 @@
 <template>
   <main class="max-w-7xl mx-auto py-12 px-6">
+    <div class="prose max-w-5xl mx-auto w-full mb-12">
+      <h1>
+        {{ task?.name }}
+      </h1>
+    </div>
     <div
       class="prose max-w-5xl mx-auto w-full"
       v-html="md"
@@ -10,24 +15,16 @@
 <script lang="ts">
 import { defineComponent, computed, ref } from 'vue'
 import { markdownIt } from '/~/plugins/markdown'
+import { useTasks } from '/~/state/tasks'
 
-const content = ref<any>('')
-const reader = (data) => new Promise((resolve) => {
-  const reader = new FileReader()
-
-  reader.readAsText(data)
-
-  reader.addEventListener('loadend', function(e){
-    resolve(e.target.result)
-  })
-})
+const task = ref<any>(undefined)
 
 export default defineComponent({
   name: 'TaskView',
   async beforeRouteEnter(to, from, next) {
-    const data = await fetch(`/tasks/${to.params.id}.md`).then(response => response.blob())
+    const { fetchTask } = useTasks()
 
-    content.value = await reader(data)
+    task.value = await fetchTask(`${to.params.id}`)
 
     next()
   },
@@ -39,7 +36,7 @@ export default defineComponent({
   },
   setup() {
     const md = computed(() => {
-      return markdownIt.render(content.value)
+      return markdownIt.render(task.value?.text)
     })
     const toc = computed(() => {
       return ''
@@ -47,7 +44,8 @@ export default defineComponent({
 
     return {
       md,
-      toc
+      toc,
+      task
     }
   }
 })
