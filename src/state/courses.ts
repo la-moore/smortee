@@ -5,20 +5,31 @@ const state = reactive({
   courses: [
     {
       id: 0,
-      description: 'Узнаем, как работает интернет, откуда и как попадают веб-сайты на экран. Осваиваем терминологию разработчика. Настраиваем среду разработки, выбираем текстовый редактор',
+      slug: 'html',
+      description: 'Узнаем, как работает интернет, откуда и как попадают веб-сайты на экран. Осваиваем терминологию разработчика',
       name: 'Основы HTML',
       articles: [],
       text: null,
     },
     {
       id: 0,
-      description: 'Cascading Style Sheets (CSS) — каскадные таблицы стилей, которые позволяют оформлять содержимое страницы в соответствии с описанными правилами',
+      slug: 'css',
+      description: 'Каскадные таблицы стилей, позволяющие оформлять содержимое страницы в соответствии с описанными правилами',
       name: 'Все о CSS',
       articles: [],
       text: null,
     },
     {
       id: 0,
+      slug: 'design',
+      description: 'Чтобы написать хороший код, нужно понять задумку дизайнера и воплотить ее с максимальной точностью',
+      name: 'Дизайн',
+      articles: [],
+      text: null,
+    },
+    {
+      id: 0,
+      slug: 'javascript',
       description: 'Курс научит использовать максимум возможностей JavaScript, чтобы создавать функциональные, привлекательные сайты',
       name: 'JavaScript',
       articles: [],
@@ -26,13 +37,7 @@ const state = reactive({
     },
     {
       id: 0,
-      description: 'Быть программистом станет не так уж и сложно после знакомства с популярными библиотеками для разработки',
-      name: 'Библиотеки',
-      articles: [],
-      text: null,
-    },
-    {
-      id: 0,
+      slug: 'first-site',
       description: 'Наконец то мы приступаем к созданию нашего первого полноценного сайта используя HTML, CSS и JS',
       name: 'Первый сайт',
       articles: [],
@@ -40,6 +45,15 @@ const state = reactive({
     },
     {
       id: 0,
+      slug: 'libraries',
+      description: 'Быть программистом станет не так уж и сложно после знакомства с популярными библиотеками для разработки',
+      name: 'Библиотеки',
+      articles: [],
+      text: null,
+    },
+    {
+      id: 0,
+      slug: 'vue',
       description: 'Разработка на Vue 3 - от использования его как небольшой библиотеки до создания современного SPA приложения',
       name: 'Великий Vue',
       articles: [],
@@ -47,6 +61,7 @@ const state = reactive({
     },
     {
       id: 0,
+      slug: 'api',
       description: 'Работа с сервером или как сделать сайт, информауия на котором зависит от данных на сервере',
       name: 'Работа с API',
       articles: [],
@@ -54,13 +69,15 @@ const state = reactive({
     },
     {
       id: 0,
-      description: 'В ходе курса вы научитесь работать с Git, изучите работу с локальным и удаленным хранилищем, а также изучите все основные концепции технологии Git',
+      slug: 'git',
+      description: 'В ходе курса вы научитесь работать с Git, изучите работу с локальным, удаленным хранилищем и концепции технологии Git',
       name: 'Немного про Git',
       articles: [],
       text: null,
     },
     {
       id: 0,
+      slug: 'modern-site',
       description: 'Улучшение уже написанного ранее нами сайта на современные технологии с использованием Vue и git',
       name: 'Современный сайт',
       articles: [],
@@ -77,11 +94,11 @@ async function fetchCourses() {
   return state.courses
 }
 
-async function fetchCourse(id: string) {
+async function fetchCourse(slug: string) {
   const { articles } = useArticles()
-  const course = state.courses.find((course) => course.id === parseInt(id))
+  const course = state.courses.find((course) => course.slug === slug)
 
-  course.articles = articles.value.filter((article) => article.courseId === parseInt(id))
+  course.articles = articles.value.filter((article) => article.courseSlug === course.slug)
 
   return course
 }

@@ -11,7 +11,7 @@ const state = reactive({
       text: '',
       file: 'html-intro.md',
       name: 'Введение в HTML',
-      courseId: 1,
+      courseSlug: 'html',
       tasks: []
     },
     {
@@ -21,7 +21,7 @@ const state = reactive({
       text: '',
       file: 'html-how-it-works.md',
       name: 'Как работает сайт',
-      courseId: 1,
+      courseSlug: 'html',
       tasks: []
     },
     {
@@ -31,7 +31,7 @@ const state = reactive({
       text: '',
       file: 'html-forms.md',
       name: 'Формы',
-      courseId: 1,
+      courseSlug: 'html',
       tasks: []
     },
     {
@@ -41,7 +41,7 @@ const state = reactive({
       text: '',
       file: 'html-directory.md',
       name: 'Справочник',
-      courseId: 1,
+      courseSlug: 'html',
       tasks: []
     },
 
@@ -52,7 +52,7 @@ const state = reactive({
       text: '',
       file: 'css-intro.md',
       name: 'Введение в CSS',
-      courseId: 2,
+      courseSlug: 'css',
       tasks: []
     },
     {
@@ -62,7 +62,7 @@ const state = reactive({
       text: '',
       file: 'css-selectors.md',
       name: 'Селекторы',
-      courseId: 2,
+      courseSlug: 'css',
       tasks: []
     },
     {
@@ -72,7 +72,7 @@ const state = reactive({
       text: '',
       file: 'css-colors.md',
       name: 'Цвета',
-      courseId: 2,
+      courseSlug: 'css',
       tasks: []
     },
     {
@@ -82,7 +82,7 @@ const state = reactive({
       text: '',
       file: 'css-responsive.md',
       name: 'Адаптивный дизайн',
-      courseId: 2,
+      courseSlug: 'css',
       tasks: []
     },
     {
@@ -92,7 +92,7 @@ const state = reactive({
       text: '',
       file: 'css-animations.md',
       name: 'Анимации',
-      courseId: 2,
+      courseSlug: 'css',
       tasks: []
     },
     {
@@ -102,7 +102,7 @@ const state = reactive({
       text: '',
       file: 'css-directory.md',
       name: 'Справочник',
-      courseId: 2,
+      courseSlug: 'css',
       tasks: []
     },
 
@@ -113,7 +113,17 @@ const state = reactive({
       text: '',
       file: 'javascript-intro.md',
       name: 'Введение',
-      courseId: 3,
+      courseSlug: 'javascript',
+      tasks: []
+    },
+    {
+      id: 0,
+      created_at: '2022-06-15 11:55:04',
+      description: null,
+      text: '',
+      file: 'javascript-console.md',
+      name: 'Консоль браузера',
+      courseSlug: 'javascript',
       tasks: []
     },
     {
@@ -123,7 +133,7 @@ const state = reactive({
       text: '',
       file: 'javascript-types.md',
       name: 'Типы данных',
-      courseId: 3,
+      courseSlug: 'javascript',
       tasks: []
     },
     {
@@ -133,7 +143,7 @@ const state = reactive({
       text: '',
       file: 'javascript-functions.md',
       name: 'Функции',
-      courseId: 3,
+      courseSlug: 'javascript',
       tasks: []
     },
     {
@@ -143,7 +153,7 @@ const state = reactive({
       text: '',
       file: 'javascript-variables.md',
       name: 'Переменные',
-      courseId: 3,
+      courseSlug: 'javascript',
       tasks: []
     },
     {
@@ -153,7 +163,7 @@ const state = reactive({
       text: '',
       file: 'javascript-loops.md',
       name: 'Циклы',
-      courseId: 3,
+      courseSlug: 'javascript',
       tasks: []
     },
     {
@@ -163,17 +173,7 @@ const state = reactive({
       text: '',
       file: 'javascript-events.md',
       name: 'События',
-      courseId: 3,
-      tasks: []
-    },
-    {
-      id: 0,
-      created_at: '2022-06-15 11:55:04',
-      description: null,
-      text: '',
-      file: 'javascript-console.md',
-      name: 'Консоль боаузера',
-      courseId: 3,
+      courseSlug: 'javascript',
       tasks: []
     },
     {
@@ -183,7 +183,7 @@ const state = reactive({
       text: '',
       file: 'javascript-web-api.md',
       name: 'Веб API',
-      courseId: 3,
+      courseSlug: 'javascript',
       tasks: []
     },
 
@@ -194,7 +194,7 @@ const state = reactive({
       text: '',
       file: 'libs-intro.md',
       name: 'Что такое библиотека',
-      courseId: 4,
+      courseSlug: 'libraries',
       tasks: []
     },
     {
@@ -204,7 +204,48 @@ const state = reactive({
       text: '',
       file: 'libs-tailwind-css.md',
       name: 'Tailwind Css',
-      courseId: 4,
+      courseSlug: 'libraries',
+      tasks: []
+    },
+
+    {
+      id: 0,
+      created_at: '2022-06-15 11:55:04',
+      description: null,
+      text: '',
+      file: 'design-intro.md',
+      name: 'Что такое дизайн',
+      courseSlug: 'design',
+      tasks: []
+    },
+    {
+      id: 0,
+      created_at: '2022-06-15 11:55:04',
+      description: null,
+      text: '',
+      file: 'design-colors.md',
+      name: 'Цвета',
+      courseSlug: 'design',
+      tasks: []
+    },
+    {
+      id: 0,
+      created_at: '2022-06-15 11:55:04',
+      description: null,
+      text: '',
+      file: 'design-fonts.md',
+      name: 'Типографика',
+      courseSlug: 'design',
+      tasks: []
+    },
+    {
+      id: 0,
+      created_at: '2022-06-15 11:55:04',
+      description: null,
+      text: '',
+      file: 'design-graphic.md',
+      name: 'Графика',
+      courseSlug: 'design',
       tasks: []
     },
   ],

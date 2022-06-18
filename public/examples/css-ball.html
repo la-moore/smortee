@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>CSS - Ball</title>
+  <style>
+    body {
+      height: 160px;
+    }
+
+    .ball {
+      top: 100px;
+      width: 60px;
+      height: 60px;
+      display: block;
+      background: #b01e1e;
+      position: relative;
+      border-radius: 100%;
+      animation: ball 2s;
+    }
+
+    @keyframes ball {
+      0% {
+        top: 100px;
+      }
+
+      20% {
+        top: 30px;
+      }
+
+      40% {
+        top: 100px;
+      }
+
+      60% {
+        top: 50px;
+      }
+
+      80% {
+        top: 100px;
+      }
+
+      90% {
+        top: 70px;
+      }
+
+      100% {
+        top: 100px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="ball"></div>
+</body>
+</html>

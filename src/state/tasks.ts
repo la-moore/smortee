@@ -78,6 +78,14 @@ const state = reactive({
     },
     {
       id: 0,
+      name: 'Мячик прыг-скок',
+      text: '',
+      file: 'css-ball.md',
+      created_at: '2022-06-15 12:12:58',
+      articleId: 9,
+    },
+    {
+      id: 0,
       name: 'Вечное ожидание',
       text: '',
       file: 'css-spinner.md',

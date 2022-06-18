@@ -158,7 +158,7 @@ function tokenizeImagesAndMedia(state, silent, md) {
     tokens = []
   )
 
-  const mediaType = guessMediaType(href)
+  const mediaType = guessMediaType(content, href)
   const tag = mediaType == 'image' ? 'img' : mediaType
 
   const token = state.push(mediaType, tag, 0)
@@ -181,21 +181,24 @@ function tokenizeImagesAndMedia(state, silent, md) {
   return true
 }
 
-function guessMediaType(url) {
+function guessMediaType(title, url) {
   const extensionMatch = url.match(/\.([^/.]+)$/)
 
-  if (extensionMatch === null)
-    return 'image'
-  const extension = extensionMatch[1]
+  if (title === 'iframe') {
+    const extension = extensionMatch?.[1] || ''
 
-  if (validAudioExtensions.indexOf(extension.toLowerCase()) != -1)
-    return 'audio'
-  else if (validVideoExtensions.indexOf(extension.toLowerCase()) != -1)
-    return 'video'
-  else if (validSiteExtensions.indexOf(extension.toLowerCase()) != -1)
-    return 'iframe'
-  else
-    return 'image'
+    if (validAudioExtensions.indexOf(extension.toLowerCase()) != -1)
+      return 'audio'
+    else if (validVideoExtensions.indexOf(extension.toLowerCase()) != -1)
+      return 'video'
+    else if (title === 'iframe')
+      return 'iframe'
+  } else {
+    if (extensionMatch === null)
+      return 'image'
+  }
+
+  return 'image'
 }
 
 function renderMedia(tokens, idx, options, env, md) {

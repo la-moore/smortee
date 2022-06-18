@@ -14,7 +14,7 @@
         >
           <router-link
             class="block"
-            :to="{ name: 'course', params: { id: course.id } }"
+            :to="{ name: 'course', params: { id: course.slug } }"
           >
             <div class="overflow-hidden border rounded-md bg-white h-full">
               <div class="px-6 py-4 space-y-3">
