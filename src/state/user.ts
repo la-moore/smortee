@@ -17,8 +17,22 @@ async function fetchMe() {
   return data.data
 }
 
+async function fetchUsers() {
+  const { data } = await api.get('/users')
+
+  return data.data
+}
+
+async function fetchUser(id: string) {
+  const { data } = await api.get(`/users/${id}`)
+
+  return data.data
+}
+
 export function useUser() {
   return {
     fetchMe,
+    fetchUser,
+    fetchUsers
   }
 }

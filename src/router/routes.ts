@@ -23,6 +23,56 @@ export default [
         component: () => import('../views/profile/profile.vue')
       },
       {
+        path: 'admin',
+        name: 'admin',
+        component: () => emptyRouteComponent,
+        children: [
+          {
+            path: '',
+            name: 'admin',
+            component: () => import('../views/admin/admin.vue')
+          },
+          {
+            path: 'tasks',
+            name: 'admin-tasks',
+            component: () => import('../views/admin/admin-tasks.vue')
+          },
+          {
+            path: 'courses',
+            name: 'admin-courses',
+            component: () => import('../views/admin/admin-courses.vue')
+          },
+          {
+            path: 'users',
+            name: 'admin-users',
+            component: () => import('../views/admin/admin-users.vue')
+          },
+          {
+            path: 'articles',
+            name: 'admin-articles',
+            component: () => import('../views/admin/admin-articles.vue')
+          },
+          {
+            path: 'tasks-create/:articleId?',
+            name: 'admin-tasks-create',
+            props: true,
+            component: () => import('../views/admin/admin-tasks-create.vue')
+          },
+          {
+            path: 'tasks-edit/:id',
+            name: 'admin-tasks-edit',
+            props: true,
+            component: () => import('../views/admin/admin-tasks-edit.vue')
+          },
+          {
+            path: 'users-edit/:id',
+            name: 'admin-users-edit',
+            props: true,
+            component: () => import('../views/admin/admin-users-edit.vue')
+          },
+        ]
+      },
+      {
         path: 'course/:id',
         name: 'course',
         props: true,

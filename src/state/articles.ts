@@ -257,7 +257,9 @@ state.articles.forEach((article, id) => {
 })
 
 async function fetchArticles() {
-  return state.articles
+  const { data } = await api.get('/articles')
+
+  return data.data
 }
 
 async function fetchArticle(id: string) {

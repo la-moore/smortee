@@ -6,6 +6,15 @@
           <h2 class="text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
             {{ task.name }}
           </h2>
+          <p class="mt-5 text-xl text-gray-500">
+            <span>Тема: </span>
+            <router-link
+              :to="{ name: 'article', params: { id: task.article.id } }"
+              class="text-blue-600"
+            >
+              {{ task.article.name }}
+            </router-link>
+          </p>
         </div>
       </div>
     </div>
@@ -24,7 +33,7 @@
           Ответ
         </h2>
 
-        <div class="flex space-x-6">
+        <div class="flex flex-col space-y-6 md:space-y-0 md:space-x-6 md:flex-row">
           <form
             class="space-y-6 flex-1"
             @submit="onSubmit"
@@ -93,7 +102,10 @@
               Ваши ответы
             </h2>
 
-            <dd class="mt-1 text-sm text-gray-900">
+            <dd
+              v-if="task.answers.length > 0"
+              class="mt-1 text-sm text-gray-900"
+            >
               <ul
                 role="list"
                 class="border border-gray-200 rounded-md divide-y divide-gray-200 bg-white"
@@ -187,8 +199,9 @@ export default defineComponent({
     const { answerTask } = useTasks()
     const { handleSubmit, errors: formErrors, isSubmitting, resetForm } = useForm()
 
-    const { value: fieldLink } = useField('description')
-    const { value: fieldDescription } = useField('text')
+    const { value: fieldDescription } = useField('description')
+    const { value: fieldText } = useField('text')
+    const { value: fieldArticleId } = useField('article_id')
 
     const md = computed(() => {
       return markdownIt.render(task.value?.text)
@@ -210,8 +223,9 @@ export default defineComponent({
       task,
       profile,
 
-      fieldLink,
-      fieldDescription
+      fieldDescription,
+      fieldText,
+      fieldArticleId
     }
   }
 })
