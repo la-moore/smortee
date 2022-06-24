@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-50 min-h-screen">
+  <div class="">
     <div class="flex items-center py-32">
       <div class="max-w-md w-full mx-auto py-12 px-6">
         <base-logo />
@@ -14,7 +14,7 @@
         >
           <router-link
             class="block"
-            :to="{ name: 'course', params: { id: course.slug } }"
+            :to="{ name: 'course', params: { id: course.id } }"
           >
             <div class="overflow-hidden border rounded-md bg-white h-full">
               <div class="px-6 py-4 space-y-3">
@@ -34,24 +34,27 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref } from 'vue'
-import { useCourses } from '/~/state/courses'
-import BaseLogo from '/~/components/base-logo.vue'
+import { defineComponent, ref } from 'vue'
+import { useCourses } from '~/state/courses'
+import BaseLogo from '~/components/base-logo.vue'
+
+const courses = ref([])
 
 export default defineComponent({
   name: 'HomeView',
   components: {
     BaseLogo
   },
-  setup() {
+  async beforeRouteEnter(to, from, next) {
     const { fetchCourses } = useCourses()
 
-    const courses = ref([])
-
-    onMounted(async () => {
+    try {
       courses.value = await fetchCourses()
-    })
-
+    } finally {
+      next()
+    }
+  },
+  setup() {
     return {
       courses
     }

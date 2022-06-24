@@ -1,6 +1,7 @@
 import { reactive, toRef } from 'vue'
 import { useTasks } from './tasks'
-import { reader } from '/~/helpers/reader'
+import { reader } from '~/helpers/reader'
+import { api } from '~/plugins/api';
 
 const state = reactive({
   articles: [
@@ -260,19 +261,9 @@ async function fetchArticles() {
 }
 
 async function fetchArticle(id: string) {
-  const { tasks } = useTasks()
+  const { data } = await api.get(`/articles/${id}`)
 
-  const article = state.articles.find((article) => article.id === parseInt(id))
-
-  article.tasks = tasks.value.filter((task) => task.articleId === parseInt(id))
-
-  if (article.file) {
-    const data = await fetch(`/articles/${article.file}`).then(response => response.blob())
-
-    article.text = await reader(data)
-  }
-
-  return article
+  return data.data
 }
 
 export function useArticles() {

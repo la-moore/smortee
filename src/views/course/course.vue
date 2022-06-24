@@ -1,15 +1,5 @@
 <template>
-  <div
-    v-if="course"
-    class="bg-gray-50 min-h-screen"
-  >
-    <div class="bg-white sticky top-0 border-b">
-      <div class="pt-safe pt-3" />
-      <div class="h-16 flex items-center px-5">
-        <base-logo class="h-10" />
-      </div>
-    </div>
-
+  <div v-if="course">
     <div class="bg-white">
       <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8 lg:flex lg:justify-between">
         <div class="max-w-xl">
@@ -51,14 +41,21 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref } from 'vue'
-import { useCourses } from '/~/state/courses'
-import BaseLogo from '/~/components/base-logo.vue'
+import { defineComponent, ref } from 'vue'
+import { useCourses } from '~/state/courses'
+
+const course = ref(undefined)
 
 export default defineComponent({
   name: 'HomeView',
-  components: {
-    BaseLogo
+  async beforeRouteEnter(to, from, next) {
+    const { fetchCourse } = useCourses()
+
+    try {
+      course.value = await fetchCourse(`${to.params.id}`)
+    } finally {
+      next()
+    }
   },
   props: {
     id: {
@@ -66,14 +63,7 @@ export default defineComponent({
       default: '',
     }
   },
-  setup(props) {
-    const { fetchCourse } = useCourses()
-    const course = ref(undefined)
-
-    onMounted(async () => {
-      course.value = await fetchCourse(props.id)
-    })
-
+  setup() {
     return {
       course
     }

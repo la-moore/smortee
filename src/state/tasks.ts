@@ -1,5 +1,5 @@
 import { reactive, toRef } from 'vue'
-import { reader } from '/~/helpers/reader'
+import { api } from '~/plugins/api'
 
 const state = reactive({
   tasks: [
@@ -100,19 +100,21 @@ state.tasks.forEach((task, id) => {
 })
 
 async function fetchTasks() {
-  return state.tasks
+  const { data } = await api.get('/tasks')
+
+  return data.data
 }
 
 async function fetchTask(id: string) {
-  const task = state.tasks.find((task) => task.id === parseInt(id))
+  const { data } = await api.get(`/tasks/${id}`)
 
-  if (task.file) {
-    const data = await fetch(`/tasks/${task.file}`).then(response => response.blob())
+  return data.data
+}
 
-    task.text = await reader(data)
-  }
+async function answerTask(id: string, opts) {
+  const { data } = await api.post(`/tasks/${id}/answers`, opts)
 
-  return task
+  return data.data
 }
 
 export function useTasks() {
@@ -120,5 +122,6 @@ export function useTasks() {
     tasks: toRef(state, 'tasks'),
     fetchTasks,
     fetchTask,
+    answerTask,
   }
 }

@@ -1,5 +1,5 @@
 import * as permalink from './permalink'
-import { transliterate } from '/~/helpers/text-transform'
+import { transliterate } from '~/helpers/text-transform'
 
 const slugify = (s) => encodeURIComponent(String(s).trim().toLowerCase().replace(/\s+/g, '-'))
 
@@ -66,8 +66,8 @@ function anchor(md, opts) {
         slug = uniqueSlug(slug, slugs, true, opts.uniqueSlugStartIndex)
       }
 
-
       token.attrSet('id', slug)
+      token.attrSet('class', 'scroll-mt-20')
 
       if (opts.tabIndex !== false) {
         token.attrSet('tabindex', `${opts.tabIndex}`)

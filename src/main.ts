@@ -9,7 +9,8 @@ const app = createApp(App)
 
 app.use(markdown)
 app.use(api, {
-  baseUrl: ''
+  // baseUrl: 'http://smortee-api.la-moore.ru',
+  baseUrl: 'http://127.0.0.1:8000',
 })
 
 app.use(router)

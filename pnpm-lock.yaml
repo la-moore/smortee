@@ -33,6 +33,7 @@ specifiers:
   tailwindcss: ^3.0.24
   tailwindcss-safe-area: ^0.2.2
   typescript: ^4.7.2
+  vee-validate: ^4.5.11
   vite: ^2.9.9
   vite-plugin-pwa: ^0.12.0
   vue: ^3.2.36
@@ -51,6 +52,7 @@ dependencies:
   markdown-it-meta: 0.0.1
   markdown-it-table-of-contents: 0.6.0
   tailwindcss-safe-area: 0.2.2
+  vee-validate: 4.5.11_vue@3.2.36
   vue: 3.2.36
   vue-router: 4.0.15_vue@3.2.36
 
@@ -4222,6 +4224,15 @@ packages:
   /v8-compile-cache/2.3.0:
     resolution: {integrity: sha512-l8lCEmLcLYZh4nbunNZvQCJc5pv7+RCwa8q/LdUx8u7lsWvPDKmpodJAJNwkAhJC//dFY48KuIEmjtd4RViDrA==}
     dev: true
+
+  /vee-validate/4.5.11_vue@3.2.36:
+    resolution: {integrity: sha512-bNF2TtuRnLnPsw6+Q/P3bMx8c2iJbvQmyikTr9r65PLAdqtdhQxnsIS3ayYNIzNWZ50sysv01DteN9h3XT/gFg==}
+    peerDependencies:
+      vue: ^3.0.0
+    dependencies:
+      '@vue/devtools-api': 6.1.4
+      vue: 3.2.36
+    dev: false
 
   /vite-plugin-pwa/0.12.0_vite@2.9.9:
     resolution: {integrity: sha512-KYD+cnS5ExLF3T28NkfzBLZ53ehHlp+qMhHGFNh0zlVGpFHrJkL2v9wd4AMi7ZkBTffgeNatIFiv8rhCsMSxBQ==}

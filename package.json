@@ -19,6 +19,7 @@
     "markdown-it-attrs": "^4.1.4",
     "markdown-it-meta": "^0.0.1",
     "vue": "^3.2.36",
+    "vee-validate": "^4.5.11",
     "vue-router": "^4.0.15"
   },
   "devDependencies": {

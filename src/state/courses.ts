@@ -1,5 +1,6 @@
 import { reactive, toRef } from 'vue'
 import { useArticles } from './articles'
+import { api } from '~/plugins/api'
 
 const state = reactive({
   courses: [
@@ -91,16 +92,15 @@ state.courses.forEach((course, id) => {
 })
 
 async function fetchCourses() {
-  return state.courses
+  const { data } = await api.get('/courses')
+
+  return data.data
 }
 
-async function fetchCourse(slug: string) {
-  const { articles } = useArticles()
-  const course = state.courses.find((course) => course.slug === slug)
+async function fetchCourse(id: string) {
+  const { data } = await api.get(`/courses/${id}`)
 
-  course.articles = articles.value.filter((article) => article.courseSlug === course.slug)
-
-  return course
+  return data.data
 }
 
 export function useCourses() {

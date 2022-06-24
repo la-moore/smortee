@@ -1,17 +1,26 @@
-// import { h, resolveComponent } from 'vue'
+import { h, resolveComponent } from 'vue'
 import { RouteRecordRaw } from 'vue-router'
 
+const emptyRouteComponent = {
+  render: () => h(resolveComponent('router-view')),
+}
 
 export default [
   {
     path: '/',
+    name: 'main',
     component: () => import('../layouts/main/main.vue'),
     redirect: { name: 'home' },
     children: [
       {
-        path: 'home',
+        path: '',
         name: 'home',
         component: () => import('../views/home/home.vue')
+      },
+      {
+        path: 'profile',
+        name: 'profile',
+        component: () => import('../views/profile/profile.vue')
       },
       {
         path: 'course/:id',
@@ -30,6 +39,19 @@ export default [
         name: 'task',
         props: true,
         component: () => import('../views/task/task.vue')
+      },
+    ]
+  },
+  {
+    path: '/auth',
+    name: 'auth',
+    component: emptyRouteComponent,
+    redirect: { name: 'login' },
+    children: [
+      {
+        path: '',
+        name: 'login',
+        component: () => import('../views/auth/login.vue')
       },
     ]
   },
