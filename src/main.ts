@@ -9,8 +9,7 @@ const app = createApp(App)
 
 app.use(markdown)
 app.use(api, {
-  // baseUrl: 'http://smortee-api.la-moore.ru',
-  baseUrl: 'http://127.0.0.1:8000',
+  baseUrl: import.meta.env.VITE_API_BASE_URL,
 })
 
 app.use(router)
