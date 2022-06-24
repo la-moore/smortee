@@ -37,23 +37,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed } from 'vue'
+import { defineComponent, ref, computed, onMounted } from 'vue'
 import { useStats } from '~/state/stats'
-
-const stats = ref<any>(undefined)
 
 export default defineComponent({
   name: 'AdminView',
-  async beforeRouteEnter(to, from, next) {
+  setup() {
     const { fetchStats } = useStats()
 
-    try {
-      stats.value = await fetchStats()
-    } finally {
-      next()
-    }
-  },
-  setup() {
+    const stats = ref<any>(undefined)
     const list = computed(() => [
       {
         label: 'Курсы',
@@ -80,6 +72,10 @@ export default defineComponent({
         count: stats.value?.users
       }
     ])
+
+    onMounted(async () => {
+      stats.value = await fetchStats()
+    })
 
     return {
       stats,
