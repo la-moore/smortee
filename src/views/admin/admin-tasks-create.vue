@@ -49,7 +49,7 @@
         </div>
       </div>
 
-      <div class="sm:col-span-6">
+      <div>
         <div class="flex justify-between">
           <label
             for="description"

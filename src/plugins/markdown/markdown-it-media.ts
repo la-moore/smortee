@@ -1,6 +1,7 @@
+// import image from 'markdown-it/lib/rules_inline/image'
+
 const validAudioExtensions = ['aac', 'm4a', 'mp3', 'oga', 'ogg', 'wav']
 const validVideoExtensions = ['mp4', 'm4v', 'ogv', 'webm', 'mpg', 'mpeg']
-const validSiteExtensions = ['html', 'svg']
 
 let messages = {
   en: {
