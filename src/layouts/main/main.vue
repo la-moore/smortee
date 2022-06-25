@@ -11,7 +11,7 @@
 
         <router-link
           v-if="user"
-          :to="{ name: 'profile' }"
+          :to="{ name: user.role === 'admin' ? 'admin' : 'profile' }"
           class="flex items-center"
         >
           <div class="text-right text-sm leading-4 hidden md:block">

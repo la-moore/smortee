@@ -30,9 +30,9 @@
         </nav>
       </div>
 
-      <div
-        class="prose max-w-4xl w-full pb-12"
-        v-html="md"
+      <base-markdown
+        class="max-w-4xl w-full pb-12"
+        :text="article.text"
       />
     </div>
   </main>
@@ -40,14 +40,17 @@
 
 <script lang="ts">
 import { defineComponent, computed, ref } from 'vue'
-import { markdownIt } from '~/plugins/markdown'
 import { kebab, transliterate } from '~/helpers/text-transform'
 import { useArticles } from '~/state/articles'
+import BaseMarkdown from '~/components/base-markdown.vue'
 
 const article = ref<any>(undefined)
 
 export default defineComponent({
   name: 'ArticleView',
+  components: {
+    BaseMarkdown
+  },
   async beforeRouteEnter(to, from, next) {
     const { fetchArticle } = useArticles()
 
@@ -64,9 +67,6 @@ export default defineComponent({
     }
   },
   setup() {
-    const md = computed(() => {
-      return markdownIt.render(article.value?.text)
-    })
     const toc = computed(() => {
       return article.value?.text.match(/^(#{1,6})\s.+$/gm)
         ?.map((v) => {
@@ -85,7 +85,6 @@ export default defineComponent({
     const navigation = ref<HTMLElement>(undefined)
 
     return {
-      md,
       toc,
       meta,
       article,

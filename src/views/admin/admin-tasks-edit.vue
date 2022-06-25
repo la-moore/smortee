@@ -34,6 +34,7 @@
             <input
               id="name"
               v-model="fieldName"
+              type="text"
               name="name"
               class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
             >
@@ -185,8 +186,9 @@ export default defineComponent({
       default: ''
     }
   },
-  setup() {
-    const { handleSubmit, errors: formErrors, isSubmitting, resetForm } = useForm()
+  setup(props) {
+    const { updateTask } = useTasks()
+    const { handleSubmit, errors: formErrors, isSubmitting } = useForm()
 
     const { value: fieldName } = useField('name')
     const { value: fieldText } = useField('text')
@@ -197,9 +199,7 @@ export default defineComponent({
     fieldArticleId.value = task.value.article?.id
 
     const onSubmit = handleSubmit(async (values) => {
-      // const answer = await answerTask(props.id, values)
-
-      resetForm()
+      task.value = await updateTask(props.id, values)
     })
 
     return {

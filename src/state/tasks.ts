@@ -117,11 +117,25 @@ async function answerTask(id: string, opts) {
   return data.data
 }
 
+async function createTask(opts) {
+  const { data } = await api.post('/tasks', opts)
+
+  return data.data
+}
+
+async function updateTask(id: string, opts) {
+  const { data } = await api.put(`/tasks/${id}`, opts)
+
+  return data.data
+}
+
 export function useTasks() {
   return {
     tasks: toRef(state, 'tasks'),
     fetchTasks,
     fetchTask,
     answerTask,
+    createTask,
+    updateTask,
   }
 }

@@ -24,8 +24,8 @@ export default [
       },
       {
         path: 'admin',
-        name: 'admin',
-        component: () => emptyRouteComponent,
+        component: emptyRouteComponent,
+        redirect: { name: 'admin' },
         children: [
           {
             path: '',
