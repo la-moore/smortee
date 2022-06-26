@@ -97,8 +97,26 @@ async function fetchCourses() {
   return data.data
 }
 
+async function fetchCourseArticles(id: string) {
+  const { data } = await api.get(`/courses/${id}/articles`)
+
+  return data.data
+}
+
 async function fetchCourse(id: string) {
   const { data } = await api.get(`/courses/${id}`)
+
+  return data.data
+}
+
+async function createCourse(opts) {
+  const { data } = await api.post('/courses', opts)
+
+  return data.data
+}
+
+async function updateCourse(id: string, opts) {
+  const { data } = await api.put(`/courses/${id}`, opts)
 
   return data.data
 }
@@ -108,5 +126,8 @@ export function useCourses() {
     courses: toRef(state, 'courses'),
     fetchCourses,
     fetchCourse,
+    createCourse,
+    updateCourse,
+    fetchCourseArticles,
   }
 }

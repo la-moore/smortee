@@ -268,10 +268,31 @@ async function fetchArticle(id: string) {
   return data.data
 }
 
+async function fetchArticleTasks(id: string) {
+  const { data } = await api.get(`/articles/${id}/tasks`)
+
+  return data.data
+}
+
+async function createArticle(opts) {
+  const { data } = await api.post('/articles', opts)
+
+  return data.data
+}
+
+async function updateArticle(id: string, opts) {
+  const { data } = await api.put(`/articles/${id}`, opts)
+
+  return data.data
+}
+
 export function useArticles() {
   return {
     articles: toRef(state, 'articles'),
     fetchArticles,
     fetchArticle,
+    fetchArticleTasks,
+    createArticle,
+    updateArticle,
   }
 }

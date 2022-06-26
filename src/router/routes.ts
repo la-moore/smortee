@@ -53,6 +53,30 @@ export default [
             component: () => import('../views/admin/admin-articles.vue')
           },
           {
+            path: 'articles-create/:courseId?',
+            name: 'admin-articles-create',
+            props: true,
+            component: () => import('../views/admin/admin-articles-create.vue')
+          },
+          {
+            path: 'articles-edit/:id',
+            name: 'admin-articles-edit',
+            props: true,
+            component: () => import('../views/admin/admin-articles-edit.vue')
+          },
+          {
+            path: 'courses-create',
+            name: 'admin-courses-create',
+            props: true,
+            component: () => import('../views/admin/admin-courses-create.vue')
+          },
+          {
+            path: 'courses-edit/:id',
+            name: 'admin-courses-edit',
+            props: true,
+            component: () => import('../views/admin/admin-courses-edit.vue')
+          },
+          {
             path: 'tasks-create/:articleId?',
             name: 'admin-tasks-create',
             props: true,

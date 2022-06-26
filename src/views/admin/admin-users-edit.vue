@@ -80,7 +80,7 @@
       </div>
 
       <dd
-        v-if="user.answers.length > 0"
+        v-if="answers.length > 0"
         class="mt-1 text-sm text-gray-900"
       >
         <ul
@@ -88,7 +88,7 @@
           class="border border-gray-200 rounded-md divide-y divide-gray-200 bg-white"
         >
           <template
-            v-for="(answer, idx) in user.answers"
+            v-for="(answer, idx) in answers"
             :key="idx"
           >
             <li class="pl-3 pr-4 py-3 text-sm">
@@ -131,7 +131,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent, onMounted, ref } from 'vue'
 import { useField, useForm } from 'vee-validate'
 import { useUser } from '~/state/user'
 
@@ -154,8 +154,11 @@ export default defineComponent({
       default: ''
     }
   },
-  setup() {
-    const { handleSubmit, errors: formErrors, isSubmitting, resetForm } = useForm()
+  setup(props) {
+    const { updateUser, fetchUserAnswers } = useUser()
+    const { handleSubmit, errors: formErrors, isSubmitting } = useForm()
+
+    const answers = ref([])
 
     const { value: fieldName } = useField('name')
     const { value: fieldEmail } = useField('email')
@@ -163,10 +166,12 @@ export default defineComponent({
     fieldName.value = user.value.name
     fieldEmail.value = user.value.email
 
-    const onSubmit = handleSubmit(async (values) => {
-      // const answer = await answerTask(props.id, values)
+    onMounted(async () => {
+      answers.value = await fetchUserAnswers(props.id)
+    })
 
-      resetForm()
+    const onSubmit = handleSubmit(async (values) => {
+      user.value = await updateUser(props.id, values)
     })
 
     return {
@@ -175,6 +180,7 @@ export default defineComponent({
       isSubmitting,
 
       user,
+      answers,
 
       fieldName,
       fieldEmail,

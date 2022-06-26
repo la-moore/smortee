@@ -7,7 +7,7 @@
         </h2>
       </div>
       <div class="flex ml-4">
-        <router-link :to="{ name: 'admin-tasks-create' }">
+        <router-link :to="{ name: 'admin-courses-create' }">
           <button
             type="button"
             class="ml-3 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
@@ -24,7 +24,7 @@
         :key="idx"
       >
         <router-link
-          :to="{ name: 'course', params: { id: course.id } }"
+          :to="{ name: 'admin-courses-edit', params: { id: course.id } }"
           class="col-span-1 flex shadow-sm rounded-md group border border-gray-200 bg-white"
         >
           <div class="flex-1 flex items-center justify-between truncate">

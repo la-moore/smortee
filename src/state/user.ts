@@ -23,8 +23,20 @@ async function fetchUsers() {
   return data.data
 }
 
+async function updateUser(id: string, opts) {
+  const { data } = await api.put(`/users/${id}`, opts)
+
+  return data.data
+}
+
 async function fetchUser(id: string) {
   const { data } = await api.get(`/users/${id}`)
+
+  return data.data
+}
+
+async function fetchUserAnswers(id: string) {
+  const { data } = await api.get(`/users/${id}/answers`)
 
   return data.data
 }
@@ -33,6 +45,8 @@ export function useUser() {
   return {
     fetchMe,
     fetchUser,
-    fetchUsers
+    fetchUsers,
+    updateUser,
+    fetchUserAnswers
   }
 }
