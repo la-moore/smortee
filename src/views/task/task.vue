@@ -18,11 +18,12 @@
         </div>
       </div>
     </div>
+
     <div class="bg-white">
       <div class="max-w-7xl mx-auto py-12 px-6">
-        <div
-          class="prose max-w-5xl mx-auto w-full"
-          v-html="md"
+        <base-markdown
+          class="max-w-4xl w-full pb-12"
+          :text="task.text"
         />
       </div>
     </div>
@@ -163,11 +164,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ref } from 'vue'
-import { markdownIt } from '~/plugins/markdown'
+import { defineComponent, ref } from 'vue'
 import { useTasks } from '~/state/tasks'
 import { useUser } from '~/state/user'
 import { useField, useForm } from 'vee-validate'
+import BaseMarkdown from '~/components/base-markdown.vue'
 import BaseSpinner from '~/components/base-spinner.vue'
 
 const task = ref<any>(undefined)
@@ -176,6 +177,7 @@ const profile = ref<any>(undefined)
 export default defineComponent({
   name: 'TaskView',
   components: {
+    BaseMarkdown,
     BaseSpinner
   },
   async beforeRouteEnter(to, from, next) {
@@ -203,10 +205,6 @@ export default defineComponent({
     const { value: fieldText } = useField('text')
     const { value: fieldArticleId } = useField('article_id')
 
-    const md = computed(() => {
-      return markdownIt.render(task.value?.text)
-    })
-
     const onSubmit = handleSubmit(async (values) => {
       const answer = await answerTask(props.id, values)
 
@@ -219,7 +217,6 @@ export default defineComponent({
       formErrors,
       isSubmitting,
 
-      md,
       task,
       profile,
 
