@@ -22,7 +22,7 @@
     <div class="bg-white">
       <div class="max-w-7xl mx-auto py-12 px-6">
         <base-markdown
-          class="max-w-4xl w-full pb-12"
+          class="max-w-4xl w-full mx-auto pb-12"
           :text="task.text"
         />
       </div>
