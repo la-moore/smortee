@@ -49,7 +49,7 @@
               <div class="mt-1">
                 <input
                   id="link"
-                  v-model="fieldLink"
+                  v-model="fieldDescription"
                   type="url"
                   name="link"
                   class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
@@ -68,7 +68,7 @@
               <div class="mt-1">
                 <textarea
                   id="description"
-                  v-model="fieldDescription"
+                  v-model="fieldText"
                   name="description"
                   rows="3"
                   class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md"
