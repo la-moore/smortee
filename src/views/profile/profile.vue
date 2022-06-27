@@ -37,7 +37,7 @@
             <div class="flex-1 flex items-center justify-between border-t border-r border-b border-gray-200 bg-white rounded-r-md truncate">
               <div class="flex-1 px-4 py-2 text-sm truncate">
                 <p class="text-gray-900 font-medium group-hover:text-gray-600">
-                  {{ `${task.article.name} - ${task.name}` }}
+                  {{ `${task.article ? task.article.name + ' - ' : ''}${task.name}` }}
                 </p>
                 <p class="text-gray-500">
                   {{ task.complete ? 'Решена' : 'Не решена' }}
