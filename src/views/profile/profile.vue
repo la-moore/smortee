@@ -7,7 +7,7 @@
 
       <ul class="mt-3 grid grid-cols-1 gap-5">
         <li
-          v-for="(task, idx) in [...profile?.tasks, ...tasks]"
+          v-for="(task, idx) in tasks"
           :key="idx"
         >
           <router-link
@@ -87,10 +87,7 @@ export default defineComponent({
 
     try {
       profile.value = await fetchMe()
-
-      if (profile.value.role === 'admin') {
-        tasks.value = await fetchTasks()
-      }
+      tasks.value = await fetchTasks()
     } finally {
       next()
     }
