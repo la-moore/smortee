@@ -6,7 +6,10 @@
           <h2 class="text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
             {{ task.name }}
           </h2>
-          <p class="mt-5 text-xl text-gray-500">
+          <p
+            v-if="task.article"
+            class="mt-5 text-xl text-gray-500"
+          >
             <span>Тема: </span>
             <router-link
               :to="{ name: 'article', params: { id: task.article.id } }"
