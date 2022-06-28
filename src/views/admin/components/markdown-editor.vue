@@ -61,7 +61,10 @@
         />
       </div>
 
-      <div class="shadow-sm overflow-hidden focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md">
+      <div
+        v-else
+        class="shadow-sm overflow-hidden focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md"
+      >
         <codemirror
           v-model="localValue"
           placeholder="Code goes here..."
