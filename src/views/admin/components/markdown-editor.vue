@@ -85,6 +85,7 @@ import { markdown } from '@codemirror/lang-markdown'
 import { Codemirror } from 'vue-codemirror'
 import { markdownIt } from '~/plugins/markdown'
 import uppercase from '~/plugins/codemirror/uppercase'
+import theme from '~/plugins/codemirror/theme'
 import BaseMarkdown from '~/components/base-markdown.vue'
 
 export default defineComponent({
@@ -123,6 +124,7 @@ export default defineComponent({
 
     const extensions = [
       markdown(),
+      theme,
       keymap.of([uppercase]),
     ]
 
