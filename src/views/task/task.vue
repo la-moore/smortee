@@ -2,7 +2,7 @@
   <main class="">
     <div class="bg-white border-b">
       <div class="max-w-7xl flex flex-col mx-auto py-16 sm:py-24 px-4 sm:px-6 lg:px-8 lg:flex lg:justify-between">
-        <div class="max-w-xl">
+        <div class="max-w-2xl">
           <h2 class="text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
             {{ task.name }}
           </h2>
@@ -107,7 +107,7 @@
             </h2>
 
             <dd
-              v-if="task.answers.length > 0"
+              v-if="answers.length > 0"
               class="mt-1 text-sm text-gray-900"
             >
               <ul
@@ -115,7 +115,7 @@
                 class="border border-gray-200 rounded-md divide-y divide-gray-200 bg-white"
               >
                 <template
-                  v-for="(answer, idx) in task.answers"
+                  v-for="(answer, idx) in answers"
                   :key="idx"
                 >
                   <li class="pl-3 pr-4 py-3 text-sm">
@@ -176,6 +176,7 @@ import BaseSpinner from '~/components/base-spinner.vue'
 
 const task = ref<any>(undefined)
 const profile = ref<any>(undefined)
+const answers = ref<any[]>([])
 
 export default defineComponent({
   name: 'TaskView',
@@ -184,11 +185,12 @@ export default defineComponent({
     BaseSpinner
   },
   async beforeRouteEnter(to, from, next) {
-    const { fetchTask } = useTasks()
+    const { fetchTask, fetchTaskAnswers } = useTasks()
     const { fetchMe } = useUser()
 
     try {
       task.value = await fetchTask(`${to.params.id}`)
+      answers.value = await fetchTaskAnswers(`${to.params.id}`)
       profile.value = await fetchMe()
     } finally {
       next()
@@ -222,6 +224,7 @@ export default defineComponent({
 
       task,
       profile,
+      answers,
 
       fieldDescription,
       fieldText,

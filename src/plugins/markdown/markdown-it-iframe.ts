@@ -8,7 +8,7 @@ function block(md, name, opts) {
       .replace(/"/g, '\'')
 
     if (token.info === 'iframe')
-      return `<iframe srcdoc="${content}" style="resize: horizontal;" class="w-full h-full border rounded-xl" onload="this.style.height = this.contentWindow.document.body.scrollHeight+50+'px'"></iframe>`
+      return `<iframe srcdoc="${content}" style="resize: horizontal;" class="w-full h-full border rounded-xl max-w-full" onload="this.style.height = this.contentWindow.document.body.scrollHeight+50+'px'"></iframe>`
 
     return defaultRenderer(tokens, idx, opt, env, self)
   }

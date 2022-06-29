@@ -49,6 +49,24 @@
           </div>
         </div>
 
+        <div>
+          <label
+            for="link"
+            class="block text-sm font-medium text-gray-700"
+          >
+            Ссылка
+          </label>
+          <div class="mt-1">
+            <input
+              id="link"
+              v-model="fieldLink"
+              type="url"
+              name="link"
+              class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+            >
+          </div>
+        </div>
+
         <div class="flex justify-end">
           <button
             type="submit"
@@ -161,10 +179,12 @@ export default defineComponent({
     const answers = ref([])
 
     const { value: fieldName } = useField('name')
+    const { value: fieldLink } = useField('link')
     const { value: fieldEmail } = useField('email')
 
     fieldName.value = user.value.name
     fieldEmail.value = user.value.email
+    fieldLink.value = user.value.link
 
     onMounted(async () => {
       answers.value = await fetchUserAnswers(props.id)
@@ -183,6 +203,7 @@ export default defineComponent({
       answers,
 
       fieldName,
+      fieldLink,
       fieldEmail,
     }
   }

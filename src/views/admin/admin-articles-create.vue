@@ -132,7 +132,7 @@ export default defineComponent({
     const onSubmit = handleSubmit(async (values) => {
       const article = await createArticle(values)
 
-      await router.push({ name: 'admin-articles-edit', params: { id: article.id }})
+      await router.replace({ name: 'admin-articles-edit', params: { id: article.id }})
     })
 
     return {

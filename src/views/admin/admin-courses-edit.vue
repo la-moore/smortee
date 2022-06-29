@@ -202,42 +202,51 @@
               </div>
             </div>
 
-            <dd
-              v-if="articles.length > 0"
-              class="mt-1 text-sm text-gray-900"
-            >
-              <ul
-                role="list"
-                class="border border-gray-200 rounded-md divide-y divide-gray-200 bg-white"
-              >
-                <template
-                  v-for="(article, idx) in articles"
-                  :key="idx"
-                >
-                  <li class="pl-3 pr-4 py-3 text-sm">
-                    <div class="flex items-center justify-between">
-                      <div class="mx-4 flex-shrink-0 font-medium">
-                        {{ article.id }}
-                      </div>
-                      <div class="w-0 flex-1 flex items-center">
-                        <router-link
-                          :to="{ name: 'admin-articles-edit', params: { id: article.id } }"
-                          class="ml-2 flex-1 w-0 truncate text-blue-500"
-                        >
-                          {{ article.name }}
-                        </router-link>
-                      </div>
-                    </div>
-                    <div
-                      v-if="article.description"
-                      class="mt-3"
+            <div class="-mx-6 ring-1 ring-gray-300 md:mx-0 md:rounded-lg bg-white">
+              <table class="min-w-full divide-y divide-gray-300">
+                <thead>
+                  <tr>
+                    <th
+                      scope="col"
+                      class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
                     >
-                      {{ article.description }}
-                    </div>
-                  </li>
-                </template>
-              </ul>
-            </dd>
+                      Имя
+                    </th>
+                    <th
+                      scope="col"
+                      class="relative py-3.5 pl-3 pr-4 sm:pr-6"
+                    />
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    v-for="(article, idx) in articles"
+                    :key="idx"
+                  >
+                    <td class="relative py-4 pl-4 sm:pl-6 pr-3 text-sm">
+                      <div class="font-medium text-gray-900">
+                        {{ article.name }}
+                      </div>
+                      <div class="mt-1 flex flex-col text-gray-500 sm:block lg:hidden">
+                        <div>
+                          {{ article.course.name }}
+                        </div>
+                      </div>
+                    </td>
+                    <td class="relative py-3.5 pl-3 pr-4 sm:pr-6 text-right text-sm font-medium">
+                      <router-link :to="{ name: 'admin-articles-edit', params: { id: article.id } }">
+                        <button
+                          type="button"
+                          class="inline-flex items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-30"
+                        >
+                          Посмотреть
+                        </button>
+                      </router-link>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </TabPanel>
       </TabPanels>
@@ -303,7 +312,7 @@ export default defineComponent({
         return value ? parseInt(value) : 0
       },
       set(v) {
-        router.push({ hash: '#' + v })
+        router.replace({ hash: '#' + v })
       },
     })
 

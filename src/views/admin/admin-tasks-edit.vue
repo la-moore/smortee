@@ -189,56 +189,68 @@
         </TabPanel>
 
         <TabPanel>
-          <dd
-            v-if="answers.length > 0"
-            class="mt-1 text-sm text-gray-900"
-          >
-            <ul
-              role="list"
-              class="border border-gray-200 rounded-md divide-y divide-gray-200 bg-white"
-            >
-              <template
-                v-for="(answer, idx) in answers"
-                :key="idx"
-              >
-                <li class="pl-3 pr-4 py-3 text-sm">
-                  <div class="flex items-center justify-between">
-                    <div class="w-0 flex-1 flex items-center">
-                      <svg
-                        class="flex-shrink-0 h-5 w-5 text-gray-400"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                        aria-hidden="true"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z"
-                          clip-rule="evenodd"
-                        />
-                      </svg>
-                      <a
-                        :href="answer.description"
-                        target="_blank"
-                        class="ml-2 flex-1 w-0 truncate text-blue-500"
-                      >
-                        {{ answer.description }}
-                      </a>
-                    </div>
-                    <div class="ml-4 flex-shrink-0 font-medium">
+          <div class="-mx-6 ring-1 ring-gray-300 md:mx-0 md:rounded-lg bg-white">
+            <table class="min-w-full divide-y divide-gray-300">
+              <thead>
+                <tr>
+                  <th
+                    scope="col"
+                    class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
+                  >
+                    Пользователь
+                  </th>
+                  <th
+                    scope="col"
+                    class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell"
+                  >
+                    Ссылка
+                  </th>
+                  <th
+                    scope="col"
+                    class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell"
+                  >
+                    Комментарий
+                  </th>
+                  <th
+                    scope="col"
+                    class="relative py-3.5 pl-3 pr-4 sm:pr-6"
+                  />
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  v-for="(answer, idx) in answers"
+                  :key="idx"
+                >
+                  <td class="relative py-4 pl-4 sm:pl-6 pr-3 text-sm">
+                    <div class="font-medium text-gray-900">
                       {{ answer.user.name }}
                     </div>
-                  </div>
-                  <div
-                    v-if="answer.text"
-                    class="mt-3"
-                  >
+                  </td>
+                  <td class="hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell">
+                    {{ answer.description }}
+                  </td>
+                  <td class="hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell">
                     {{ answer.text }}
-                  </div>
-                </li>
-              </template>
-            </ul>
-          </dd>
+                  </td>
+                  <td class="relative py-3.5 pl-3 pr-4 sm:pr-6 text-right text-sm font-medium">
+                    <a
+                      :href="answer.description"
+                      target="_blank"
+                      class="ml-2 flex-1 w-0 truncate text-blue-500"
+                    >
+                      <button
+                        type="button"
+                        class="inline-flex items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-30"
+                      >
+                        Посмотреть
+                      </button>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </TabPanel>
 
         <TabPanel>
@@ -260,47 +272,49 @@
               </button>
             </div>
 
-            <dd
-              v-if="task.users.length > 0"
-              class="mt-1 text-sm text-gray-900"
-            >
-              <ul
-                role="list"
-                class="border border-gray-200 rounded-md divide-y divide-gray-200 bg-white"
-              >
-                <template
-                  v-for="(user, idx) in task.users"
-                  :key="idx"
-                >
-                  <li class="pl-3 pr-4 py-3 text-sm">
-                    <div class="flex items-center justify-between">
-                      <div class="w-0 flex-1 flex items-center">
-                        <svg
-                          class="flex-shrink-0 h-5 w-5 text-gray-400"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            fill-rule="evenodd"
-                            d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                            clip-rule="evenodd"
-                          /></svg>
-                        <router-link
-                          :to="{ name: 'admin-users-edit', params: { id: user.id } }"
-                          class="ml-2 flex-1 w-0 truncate text-blue-500"
-                        >
-                          {{ user.name }}
-                        </router-link>
+            <div class="-mx-6 ring-1 ring-gray-300 md:mx-0 md:rounded-lg bg-white">
+              <table class="min-w-full divide-y divide-gray-300">
+                <thead>
+                  <tr>
+                    <th
+                      scope="col"
+                      class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
+                    >
+                      Имя
+                    </th>
+                    <th
+                      scope="col"
+                      class="relative py-3.5 pl-3 pr-4 sm:pr-6"
+                    />
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    v-for="(user, idx) in task.users"
+                    :key="idx"
+                  >
+                    <td class="relative py-4 pl-4 sm:pl-6 pr-3 text-sm">
+                      <div class="font-medium text-gray-900">
+                        {{ user.name }}
                       </div>
-                      <div class="ml-4 flex-shrink-0 font-medium">
-                        {{ user.email }}
-                      </div>
-                    </div>
-                  </li>
-                </template>
-              </ul>
-            </dd>
+                    </td>
+                    <td class="relative py-3.5 pl-3 pr-4 sm:pr-6 text-right text-sm font-medium">
+                      <router-link
+                        :to="{ name: 'admin-users-edit', params: { id: user.id } }"
+                        class="ml-2 flex-1 w-0 truncate text-blue-500"
+                      >
+                        <button
+                          type="button"
+                          class="inline-flex items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-30"
+                        >
+                          Посмотреть
+                        </button>
+                      </router-link>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </TabPanel>
       </TabPanels>
@@ -368,7 +382,7 @@ export default defineComponent({
         return value ? parseInt(value) : 0
       },
       set(v) {
-        router.push({ hash: '#' + v })
+        router.replace({ hash: '#' + v })
       },
     })
 

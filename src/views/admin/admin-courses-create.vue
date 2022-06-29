@@ -102,7 +102,7 @@ export default defineComponent({
     const onSubmit = handleSubmit(async (values) => {
       const course = await createCourse(values)
 
-      await router.push({ name: 'admin-courses-edit', params: { id: course.id }})
+      await router.replace({ name: 'admin-courses-edit', params: { id: course.id }})
     })
 
     return {
