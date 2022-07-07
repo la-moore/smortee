@@ -89,7 +89,7 @@
           for="points"
           class="block text-sm font-medium text-gray-700"
         >
-          Статья
+          Оценка
         </label>
         <div class="mt-1">
           <input
