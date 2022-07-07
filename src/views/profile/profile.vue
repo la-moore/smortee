@@ -99,7 +99,7 @@
             <td class="hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell">
               <router-link
                 v-if="task.article"
-                :to="{ name: 'admin-articles-edit', params: { id: task.article.id } }"
+                :to="{ name: 'article', params: { id: task.article.id } }"
                 class="text-blue-500"
               >
                 {{ task.article.name }}
@@ -111,7 +111,7 @@
             <td class="hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell">
               <router-link
                 v-if="task.article && task.article.course"
-                :to="{ name: 'admin-courses-edit', params: { id: task.article.course.id } }"
+                :to="{ name: 'course', params: { id: task.article.course.id } }"
                 class="text-blue-500"
               >
                 {{ task.article.course.name }}

@@ -52,7 +52,7 @@
               <div class="mt-1">
                 <input
                   id="link"
-                  v-model="fieldDescription"
+                  v-model="fieldLink"
                   type="url"
                   name="link"
                   class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
@@ -203,7 +203,7 @@ export default defineComponent({
     const { answerTask } = useTasks()
     const { handleSubmit, errors: formErrors, isSubmitting, resetForm } = useForm()
 
-    const { value: fieldDescription } = useField('description')
+    const { value: fieldLink } = useField('link')
     const { value: fieldText } = useField('text')
     const { value: fieldArticleId } = useField('article_id')
 
@@ -211,7 +211,7 @@ export default defineComponent({
       const answer = await answerTask(props.id, values)
 
       resetForm()
-      task.value.answers.push(answer)
+      answers.value.push(answer)
     })
 
     return {
@@ -223,7 +223,7 @@ export default defineComponent({
       profile,
       answers,
 
-      fieldDescription,
+      fieldLink,
       fieldText,
       fieldArticleId
     }
