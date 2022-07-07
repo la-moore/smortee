@@ -68,6 +68,9 @@
                 {{ task.name }}
               </div>
               <div class="mt-1 flex flex-col text-gray-500 sm:block lg:hidden">
+                <div>
+                  Новых ответов: {{ task.new_answers || '-' }}
+                </div>
                 <div v-if="task.article">
                   {{ task.article.course.name }}
                 </div>

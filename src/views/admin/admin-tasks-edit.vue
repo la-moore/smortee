@@ -209,6 +209,12 @@
                     scope="col"
                     class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell"
                   >
+                    Оценка
+                  </th>
+                  <th
+                    scope="col"
+                    class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell"
+                  >
                     Комментарий
                   </th>
                   <th
@@ -238,6 +244,9 @@
                   </td>
                   <td class="hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell">
                     {{ answer.text }}
+                  </td>
+                  <td class="hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell">
+                    {{ answer.points }}
                   </td>
                   <td class="relative py-3.5 pl-3 pr-4 sm:pr-6 text-right text-sm font-medium">
                     <router-link
