@@ -89,6 +89,12 @@ export default [
             component: () => import('../views/admin/admin-tasks-edit.vue')
           },
           {
+            path: 'tasks-edit/:taskId/answer/:id',
+            name: 'admin-answer-edit',
+            props: true,
+            component: () => import('../views/admin/admin-answer-edit.vue')
+          },
+          {
             path: 'users-edit/:id',
             name: 'admin-users-edit',
             props: true,

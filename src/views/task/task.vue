@@ -135,18 +135,15 @@
                           />
                         </svg>
                         <a
-                          :href="answer.description"
+                          :href="answer.link"
                           target="_blank"
                           class="ml-2 flex-1 w-0 truncate text-blue-500"
                         >
-                          {{ answer.description }}
+                          {{ answer.link }}
                         </a>
                       </div>
-                      <div
-                        v-if="profile.role === 'admin'"
-                        class="ml-4 flex-shrink-0 font-medium"
-                      >
-                        {{ answer.user.name }}
+                      <div class="ml-4 flex-shrink-0 font-medium">
+                        {{ answer.points }}
                       </div>
                     </div>
                     <div

@@ -21,6 +21,18 @@ async function fetchTaskAnswers(id: string) {
   return data.data
 }
 
+async function fetchTaskAnswer(taskId: string, id: string) {
+  const { data } = await api.get(`/tasks/${taskId}/answers/${id}`)
+
+  return data.data
+}
+
+async function fetchTaskUsers(id: string) {
+  const { data } = await api.get(`/tasks/${id}/users`)
+
+  return data.data
+}
+
 async function answerTask(id: string, opts) {
   const { data } = await api.post(`/tasks/${id}/answers`, opts)
 
@@ -45,14 +57,23 @@ async function updateTask(id: string, opts) {
   return data.data
 }
 
+async function updateTaskAnswer(taskId: string, id: string, opts) {
+  const { data } = await api.put(`/tasks/${taskId}/answers/${id}`, opts)
+
+  return data.data
+}
+
 export function useTasks() {
   return {
     fetchTasks,
     fetchTask,
+    fetchTaskAnswer,
     fetchTaskAnswers,
+    fetchTaskUsers,
     answerTask,
     createTaskUser,
     createTask,
     updateTask,
+    updateTaskAnswer,
   }
 }

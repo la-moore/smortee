@@ -228,15 +228,20 @@
                     </div>
                   </td>
                   <td class="hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell">
-                    {{ answer.description }}
+                    <a
+                      :href="answer.link"
+                      target="_blank"
+                      class="ml-2 flex-1 w-0 truncate text-blue-500"
+                    >
+                      {{ answer.link }}
+                    </a>
                   </td>
                   <td class="hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell">
                     {{ answer.text }}
                   </td>
                   <td class="relative py-3.5 pl-3 pr-4 sm:pr-6 text-right text-sm font-medium">
-                    <a
-                      :href="answer.description"
-                      target="_blank"
+                    <router-link
+                      :to="{ name: 'admin-answer-edit', params: { taskId: task.id, id: answer.id } }"
                       class="ml-2 flex-1 w-0 truncate text-blue-500"
                     >
                       <button
@@ -245,7 +250,7 @@
                       >
                         Посмотреть
                       </button>
-                    </a>
+                    </router-link>
                   </td>
                 </tr>
               </tbody>
@@ -290,7 +295,7 @@
                 </thead>
                 <tbody>
                   <tr
-                    v-for="(user, idx) in task.users"
+                    v-for="(user, idx) in users"
                     :key="idx"
                   >
                     <td class="relative py-4 pl-4 sm:pl-6 pr-3 text-sm">
@@ -361,12 +366,13 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const { updateTask, fetchTaskAnswers, createTaskUser } = useTasks()
+    const { updateTask, fetchTaskAnswers, fetchTaskUsers, createTaskUser } = useTasks()
     const { handleSubmit, errors: formErrors, isSubmitting } = useForm()
 
     const preview = ref(false)
     const userId = ref(null)
     const answers = ref([])
+    const users = ref([])
     const tabs = ref([
       { title: 'Информация' },
       { title: 'Содержание' },
@@ -396,6 +402,7 @@ export default defineComponent({
 
     onMounted(async () => {
       answers.value = await fetchTaskAnswers(props.id)
+      users.value = await fetchTaskUsers(props.id)
     })
 
     const onSubmit = handleSubmit(async (values) => {
@@ -414,6 +421,7 @@ export default defineComponent({
       isSubmitting,
 
       tabs,
+      users,
       answers,
       selectedTab,
       task,
