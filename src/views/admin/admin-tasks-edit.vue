@@ -243,10 +243,10 @@
                     </a>
                   </td>
                   <td class="hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell">
-                    {{ answer.text }}
+                    {{ answer.points || '-' }}
                   </td>
                   <td class="hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell">
-                    {{ answer.points }}
+                    {{ answer.text }}
                   </td>
                   <td class="relative py-3.5 pl-3 pr-4 sm:pr-6 text-right text-sm font-medium">
                     <router-link
