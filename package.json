@@ -19,6 +19,7 @@
     "vue-codemirror": "^6.0.0",
     "axios": "^1.0.0-alpha.1",
     "dayjs": "^1.11.2",
+    "highlight.js": "^11.6.0",
     "markdown-it": "^13.0.1",
     "markdown-it-table-of-contents": "^0.6.0",
     "markdown-it-attrs": "^4.1.4",

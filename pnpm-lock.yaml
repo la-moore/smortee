@@ -29,6 +29,7 @@ specifiers:
   eslint-plugin-promise: ^6.0.0
   eslint-plugin-standard: ^5.0.0
   eslint-plugin-vue: ^9.0.1
+  highlight.js: ^11.6.0
   markdown-it: ^13.0.1
   markdown-it-attrs: ^4.1.4
   markdown-it-meta: ^0.0.1
@@ -56,6 +57,7 @@ dependencies:
   axios: 1.0.0-alpha.1
   codemirror: 6.0.0
   dayjs: 1.11.2
+  highlight.js: 11.6.0
   markdown-it: 13.0.1
   markdown-it-attrs: 4.1.4_markdown-it@13.0.1
   markdown-it-meta: 0.0.1
@@ -3230,6 +3232,11 @@ packages:
     dependencies:
       function-bind: 1.1.1
     dev: true
+
+  /highlight.js/11.6.0:
+    resolution: {integrity: sha512-ig1eqDzJaB0pqEvlPVIpSSyMaO92bH1N2rJpLMN/nX396wTpDA4Eq0uK+7I/2XG17pFaaKE0kjV/XPeGt7Evjw==}
+    engines: {node: '>=12.0.0'}
+    dev: false
 
   /highlight.js/9.18.5:
     resolution: {integrity: sha512-a5bFyofd/BHCX52/8i8uJkjr9DYwXIPnM/plwI6W7ezItLGqzt7X2G2nXuYSfsIJdkwwj/g9DG1LkcGJI/dDoA==}

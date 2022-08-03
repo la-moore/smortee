@@ -1,4 +1,6 @@
 import { Plugin } from 'vue'
+import hljs from 'highlight.js'
+import javascript from 'highlight.js/lib/languages/javascript'
 import MarkdownIt from 'markdown-it'
 import MarkdownToc from 'markdown-it-table-of-contents'
 import MarkdownAttrs from 'markdown-it-attrs'
@@ -7,8 +9,17 @@ import MarkdownIframe from './markdown-it-iframe'
 import MarkdownAnchor from './markdown-it-anchor'
 import MarkdownMedia from './markdown-it-media'
 
+hljs.registerLanguage('javascript', javascript)
+
 export const markdownIt = new MarkdownIt({
-  html: true
+  html: true,
+  highlight: (str, lang) => {
+    if (lang && hljs.getLanguage(lang)) {
+      return hljs.highlight(str, { language: lang }).value
+    }
+
+    return ''
+  }
 })
 
 const plugin: Plugin = function() {
