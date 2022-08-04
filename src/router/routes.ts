@@ -136,19 +136,6 @@ export default [
     ]
   },
   {
-    path: '/answers',
-    name: 'answers-root',
-    component: emptyRouteComponent,
-    redirect: { name: 'answers' },
-    children: [
-      {
-        path: '',
-        name: 'answers',
-        component: () => import('../views/answers/answers.vue')
-      },
-    ]
-  },
-  {
     path: '/:catchAll(.*)?',
     name: '404',
     component: () => import('../views/errors/not-found.vue')
