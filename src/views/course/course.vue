@@ -14,15 +14,12 @@
     </div>
 
     <div class="max-w-7xl mx-auto py-12 px-6">
+      <div v-if="course.articles.length === 0" class="text-center text-gray-400 font-bold">
+        Пока нет статей
+      </div>
       <div class="grid lg:grid-cols-2 2xl:grid-cols-3 gap-6">
-        <template
-          v-for="(article, idx) in course.articles"
-          :key="idx"
-        >
-          <router-link
-            class="block"
-            :to="{ name: 'article', params: { id: article.id } }"
-          >
+        <template v-for="(article, idx) in course.articles" :key="idx">
+          <router-link class="block" :to="{ name: 'article', params: { id: article.id } }">
             <div class="overflow-hidden border rounded-md bg-white h-full">
               <div class="px-6 py-4 space-y-3">
                 <div class="text-2xl font-extrabold text-gray-900 sm:text-3xl">
@@ -41,32 +38,40 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
-import { useCourses } from '~/state/courses'
+  import {
+    defineComponent,
+    ref
+  } from 'vue'
+  import {
+    useCourses
+  } from '~/state/courses'
 
-const course = ref(undefined)
+  const course = ref(undefined)
 
-export default defineComponent({
-  name: 'HomeView',
-  async beforeRouteEnter(to, from, next) {
-    const { fetchCourse } = useCourses()
+  export default defineComponent({
+    name: 'HomeView',
+    async beforeRouteEnter(to, from, next) {
+      const {
+        fetchCourse
+      } = useCourses()
 
-    try {
-      course.value = await fetchCourse(`${to.params.id}`)
-    } finally {
-      next()
+      try {
+        course.value = await fetchCourse(`${to.params.id}`)
+      } finally {
+        next()
+      }
+    },
+    props: {
+      id: {
+        type: String,
+        default: '',
+      }
+    },
+    setup() {
+      return {
+        course
+      }
     }
-  },
-  props: {
-    id: {
-      type: String,
-      default: '',
-    }
-  },
-  setup() {
-    return {
-      course
-    }
-  }
-})
+  })
+
 </script>
