@@ -41,6 +41,27 @@
     </div>
 
     <router-view />
+
+    <div class="space-y-4 py-6 border-t">
+      <div class="flex justify-center space-x-4">
+        <a
+          class="text-gray-500 font-medium"
+          href="/"
+        >
+          Главная
+        </a>
+        <a
+          class="text-gray-500 font-medium"
+          href="/"
+        >
+          Профиль
+        </a>
+      </div>
+
+      <div class="text-center text-gray-400">
+        © 2023LaMoore. All rights reserved.
+      </div>
+    </div>
   </div>
 </template>
 
