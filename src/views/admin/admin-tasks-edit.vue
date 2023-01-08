@@ -232,6 +232,15 @@
                     <div class="font-medium text-gray-900">
                       {{ answer.user.name }}
                     </div>
+                    <div class="mt-1 text-gray-500 lg:hidden">
+                      <a
+                        :href="answer.link"
+                        target="_blank"
+                        class="truncate text-blue-500"
+                      >
+                        Link
+                      </a>
+                    </div>
                   </td>
                   <td class="hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell">
                     <a
