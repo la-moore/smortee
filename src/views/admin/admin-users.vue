@@ -59,9 +59,14 @@
                 <div>
                   {{ user.email }}
                 </div>
-                <div v-if="user.link">
+                <a
+                  v-if="user.link"
+                  :href="user.link"
+                  target="_blank"
+                  class="truncate text-blue-500"
+                >
                   {{ user.link }}
-                </div>
+                </a>
               </div>
             </td>
             <td class="hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell">
